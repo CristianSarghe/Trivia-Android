@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DidYouKnow</string>
+
+    <string name="title_activity_info">InfoActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="main_button_first_label">Geography</string>
+    <string name="main_button_second_label">Physics</string>
+    <string name="main_button_third_label">Programming</string>
+
+    <string name="trivia_button_negative_label">I didn\'t know that</string>
+    <string name="trivia_button_positive_label">I knew that</string>
+
+    <string name="message_error_no_internet_permission">The application needs to access the Internet.</string>
+    <string name="message_granted_internet_permission">Internet permission granted!</string>
+</resources>
