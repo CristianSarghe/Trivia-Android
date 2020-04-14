@@ -104,7 +104,7 @@
                 android:layout_height="61dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Use the form below to share your best stuff with our team."
+                android:text="Use the form below to share your knowledge with our team."
                 android:textAlignment="center"
                 android:textColor="#CECECE"
                 android:textSize="17sp"
