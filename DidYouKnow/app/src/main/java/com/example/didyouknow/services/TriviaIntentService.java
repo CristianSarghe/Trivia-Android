@@ -91,23 +91,16 @@ public class TriviaIntentService extends IntentService {
         TriviaService service = getTriviaApiService();
         Call<InformationModel> informationCall = service.getInformation(categoryId);
 
-        Log.d("MAKING REQUEST", "MAKING INFORMATION REQUEST");
-
         informationCall.enqueue(new Callback<InformationModel>() {
             @Override
             public void onResponse(Call<InformationModel> call, Response<InformationModel> response) {
-
-                Log.d("THINGS ARE WORKING", "REACHED THIS POINT");
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(RESULT_RECEIVER_INFORMATION, response.body());
                 receiver.send(RESULT_OK, bundle);
             }
 
             @Override
-            public void onFailure(Call<InformationModel> call, Throwable t) {
-                Log.d("FAILED REQUEST", t.getMessage());
-                Log.d("FAILED REQUEST", "FAILED INFORMATION");
-            }
+            public void onFailure(Call<InformationModel> call, Throwable t) { }
         });
     }
 
@@ -129,7 +122,7 @@ public class TriviaIntentService extends IntentService {
     }
 
     private void postApiNewInformation(InformationModel model) {
-        Log.d("POST API INFORMATION", model.text + model.categoryId);
+        // Should POST information to the API
     }
 
     private TriviaService getTriviaApiService() {
