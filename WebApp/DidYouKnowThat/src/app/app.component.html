@@ -8,14 +8,16 @@
   <table>
     <thead>
       <tr>
-        <th style="width: 300px;">Category</th>
-        <th style="width: 100%;">Description</th>
+        <th style="min-width: 30px;"></th>
+        <th style="min-width: 300px;">Category</th>
+        <th style="min-width: 100%; width: 100%;">Description</th>
       </tr> 
     </thead>
     <tbody>
-      <tr *ngFor="let item of information" (click)="selectInformation(item)">
-        <td style="width: 300px;">{{ categoriesDictionary.get(item.categoryId).name }}</td>
-        <td style="width: 100%;">{{ item.text }}</td>
+      <tr *ngFor="let item of information">
+        <td style="min-width: 30px" class="delete-container" (click)="deleteInformation(item.id)">&#10005;</td>
+        <td style="min-width: 300px;" (click)="selectInformation(item)">{{ categoriesDictionary.get(item.categoryId).name }}</td>
+        <td style="min-width: 100%; width: 100%;" (click)="selectInformation(item)">{{ item.text }}</td>
       </tr>
     </tbody>
   </table>

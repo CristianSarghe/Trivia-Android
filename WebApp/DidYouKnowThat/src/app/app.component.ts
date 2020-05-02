@@ -65,9 +65,12 @@ export class AppComponent implements OnInit {
     const model = this.currentInformation.getRawValue();
 
     if (model.categoryId || model.categoryId === 0) {
-      this.triviaService
-        .acceptUserAddedInformation(model)
-        .subscribe(() => this.information.splice(this.information.findIndex((item) => item.id === this.selectedId), 1));
+      this.triviaService.acceptUserAddedInformation(model).subscribe(() =>
+        this.information.splice(
+          this.information.findIndex(item => item.id === this.selectedId),
+          1
+        )
+      );
     }
 
     this.isShownSidePanel = false;
@@ -76,6 +79,11 @@ export class AppComponent implements OnInit {
   }
 
   public deleteInformation(id: number): void {
-    this.triviaService.deleteUserAddedInformation(id).subscribe();
+    this.triviaService.deleteUserAddedInformation(id).subscribe(() =>
+      this.information.splice(
+        this.information.findIndex(item => item.id === id),
+        1
+      )
+    );
   }
 }
