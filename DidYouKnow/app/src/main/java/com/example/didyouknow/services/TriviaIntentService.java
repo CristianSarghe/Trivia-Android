@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.didyouknow.models.CategoryModel;
 import com.example.didyouknow.models.InformationModel;
@@ -65,8 +66,6 @@ public class TriviaIntentService extends IntentService {
         if (intent != null) {
             final String action = intent.getAction();
 
-            Bundle bundle = new Bundle();
-
             if (GET_INFORMATION.equals(action)) {
                 final long category = intent.getLongExtra(CATEGORY, -1);
                 final ResultReceiver receiver = intent.getParcelableExtra(RECEIVER);
@@ -122,7 +121,18 @@ public class TriviaIntentService extends IntentService {
     }
 
     private void postApiNewInformation(InformationModel model) {
-        // Should POST information to the API
+        TriviaService service = getTriviaApiService();
+        Call<InformationModel> postUserInformation = service.postUserInformation(model);
+
+        postUserInformation.enqueue(new Callback<InformationModel>() {
+            @Override
+            public void onResponse(Call<InformationModel> call, Response<InformationModel> response) { }
+
+            @Override
+            public void onFailure(Call<InformationModel> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Failed uploading your suggestion", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private TriviaService getTriviaApiService() {
